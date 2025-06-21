@@ -25,6 +25,8 @@ fun isComplete(secret: String, guess: String): Boolean = secret == guess
 
 fun isWon(complete: Boolean, attempts: Int, maxAttemptsCount: Int): Boolean = complete && attempts <= maxAttemptsCount
 
+fun isLost(complete: Boolean, attempts: Int, maxAttemptsCount: Int): Boolean = !complete && attempts > maxAttemptsCount
+
 fun playGame(secret: String, wordLength: Int, maxAttemptsCount: Int) {
     var complete: Boolean
     do {
