@@ -34,4 +34,5 @@ fun main() {
     val secretExample: String = "ACEB"
 
     println(getGameRules(wordLength, maxAttemptsCount, secretExample))
+    playGame(generateSecret(), wordLength, maxAttemptsCount)
 }
