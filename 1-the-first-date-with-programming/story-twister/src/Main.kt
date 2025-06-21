@@ -10,4 +10,15 @@ fun main() {
 
     println("Why does a spider need eight legs?")
     val thirdUserAnswer: String? = readlnOrNull()
+
+    println("Now let's have fun!")
+
+    println(firstQuestion)
+    println(firstUserAnswer)
+
+    println(secondQuestion)
+    println(secondUserAnswer)
+
+    println(thirdQuestion)
+    println(thirdUserAnswer)
 }
