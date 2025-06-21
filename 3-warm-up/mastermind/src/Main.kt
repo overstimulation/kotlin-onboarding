@@ -1,4 +1,3 @@
-// You will use this function later
 fun getGameRules(wordLength: Int, maxAttemptsCount: Int, secretExample: String) =
     "Welcome to the game! $newLineSymbol" +
             newLineSymbol +
@@ -13,5 +12,9 @@ fun getGameRules(wordLength: Int, maxAttemptsCount: Int, secretExample: String) 
             "give 1 full match (C) and 1 partial match (B)."
 
 fun main() {
-    // Write your solution here
+    val wordLength: Int = 4
+    val maxAttemptsCount: Int = 3
+    val secretExample: String = "ACEB"
+
+    println(getGameRules(wordLength, maxAttemptsCount, secretExample))
 }
