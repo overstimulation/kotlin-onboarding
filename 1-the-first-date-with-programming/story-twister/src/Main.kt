@@ -2,7 +2,12 @@ fun main() {
     println("Hello! I will ask you several questions.")
     println("Please answer all of them and be honest with me!")
 
-    val firstUserAnswer: String = ""
-    val secondUserAnswer: String = ""
-    val thirdUserAnswer: String = ""
+    println("What is TROTEN?")
+    val firstUserAnswer: String? = readlnOrNull()
+
+    println("How did you spend your graduation?")
+    val secondUserAnswer: String? = readlnOrNull()
+
+    println("Why does a spider need eight legs?")
+    val thirdUserAnswer: String? = readlnOrNull()
 }
