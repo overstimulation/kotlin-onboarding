@@ -17,6 +17,8 @@ fun countPartialMatches(secret: String, guess: String): Int = TODO()
 
 fun countExactMatches(secret: String, guess: String): Int = TODO()
 
+fun isComplete(secret: String, guess: String): Boolean = true
+
 fun main() {
     val wordLength: Int = 4
     val maxAttemptsCount: Int = 3
