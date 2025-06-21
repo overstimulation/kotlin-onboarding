@@ -19,6 +19,8 @@ fun countPartialMatches(secret: String, guess: String): Int = countAllMatches(se
 
 fun countExactMatches(secret: String, guess: String): Int = secret.filterIndexed { index, symbol -> guess[index] == symbol }.length
 
+fun printRoundResults(secret: String, guess: String) = println("Your guess has ${countExactMatches(secret, guess)} full matches and ${countPartialMatches(secret, guess)} partial matches.")
+
 fun isComplete(secret: String, guess: String): Boolean = secret == guess
 
 fun playGame(secret: String, wordLength: Int, maxAttemptsCount: Int) {
