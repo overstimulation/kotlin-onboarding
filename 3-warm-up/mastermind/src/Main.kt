@@ -19,6 +19,15 @@ fun countExactMatches(secret: String, guess: String): Int = TODO()
 
 fun isComplete(secret: String, guess: String): Boolean = true
 
+fun playGame(secret: String, wordLength: Int, maxAttemptsCount: Int) {
+    var complete: Boolean
+    do {
+        println("Please input your guess. It should be of length $wordLength.")
+        val guess = safeReadLine()
+        complete = isComplete(secret, guess)
+    } while (!complete)
+}
+
 fun main() {
     val wordLength: Int = 4
     val maxAttemptsCount: Int = 3
