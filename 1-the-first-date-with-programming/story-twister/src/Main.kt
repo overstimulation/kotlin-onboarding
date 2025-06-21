@@ -1,3 +1,4 @@
 fun main() {
-    println("Hello!")
+    println("Hello! I will ask you several questions.")
+    println("Please answer all of them and be honest with me!")
 }
