@@ -11,6 +11,12 @@ fun getGameRules(wordLength: Int, maxAttemptsCount: Int, secretExample: String) 
             "For example, with $secretExample as the hidden word, the BCDF guess will " +
             "give 1 full match (C) and 1 partial match (B)."
 
+fun generateSecret(): String = "ABCD"
+
+fun countPartialMatches(secret: String, guess: String): Int = TODO()
+
+fun countExactMatches(secret: String, guess: String): Int = TODO()
+
 fun main() {
     val wordLength: Int = 4
     val maxAttemptsCount: Int = 3
