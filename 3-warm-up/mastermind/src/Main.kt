@@ -15,7 +15,7 @@ fun generateSecret(): String = "ABCD"
 
 fun countAllMatches(secret: String, guess: String): Int = minOf(guess.filter { it in secret }.length, secret.filter { it in guess }.length)
 
-fun countPartialMatches(secret: String, guess: String): Int = TODO()
+fun countPartialMatches(secret: String, guess: String): Int = countAllMatches(secret, guess) - countExactMatches(secret, guess)
 
 fun countExactMatches(secret: String, guess: String): Int = secret.filterIndexed { index, symbol -> guess[index] == symbol }.length
 
