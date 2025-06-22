@@ -1,3 +1,5 @@
+fun safeReadLine(): String = readlnOrNull() ?: error("Received null value")
+
 fun trimPicture(picture: String): String = picture.trimIndent()
 
 fun applyFilter(picture: String, filter: String): String {
