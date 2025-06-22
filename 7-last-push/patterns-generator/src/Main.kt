@@ -39,6 +39,13 @@ fun repeatHorizontally(pattern: String, n: Int, patternWidth: Int): String {
     return result.removeSuffix(newLineSymbol).toString()
 }
 
+fun dropTopLine(image: String, width: Int, patternHeight: Int, patternWidth: Int): String {
+    if (patternHeight > 1) {
+        return image.drop(patternWidth * width + newLineSymbol.length)
+    }
+    return image
+}
+
 // You will use this function later
 fun choosePattern(): String {
     do {
