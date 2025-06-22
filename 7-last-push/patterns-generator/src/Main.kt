@@ -1,4 +1,3 @@
-// You will use this function later
 fun getPattern(): String {
     println(
         "Do you want to use a pre-defined pattern or a custom one? " +
@@ -118,7 +117,6 @@ fun canvasWithGapsGenerator(pattern: String, width: Int, height: Int): String {
     return resultBuilder.toString()
 }
 
-// You will use this function later
 fun choosePattern(): String {
     do {
         println("Please choose a pattern. The possible options: ${allPatterns().joinToString(", ")}")
@@ -130,7 +128,6 @@ fun choosePattern(): String {
     } while (true)
 }
 
-// You will use this function later
 fun chooseGenerator(): String {
     var toContinue = true
     var generator = ""
@@ -148,22 +145,28 @@ fun chooseGenerator(): String {
     return generator
 }
 
-// You will use this function later
 fun safeReadLine(): String = readlnOrNull() ?: error("Your input is incorrect, sorry")
 
+fun applyGenerator(pattern: String, generatorName: String, width: Int, height: Int): String {
+    val trimmedPattern = pattern.trimIndent()
+    return when (generatorName) {
+        "canvas" -> canvasGenerator(trimmedPattern, width, height)
+        "canvasGaps" -> canvasWithGapsGenerator(trimmedPattern, width, height)
+        else -> throw IllegalStateException("Unexpected generator name: $generatorName")
+    }
+}
+
 fun main() {
-    // Uncomment this code on the last step of the game
+    val pattern = getPattern()
+    val generatorName = chooseGenerator()
+    println("Please input the width of the resulting picture:")
+    val width = safeReadLine().toInt()
+    println("Please input the height of the resulting picture:")
+    val height = safeReadLine().toInt()
 
-    // val pattern = getPattern()
-    // val generatorName = chooseGenerator()
-    // println("Please input the width of the resulting picture:")
-    // val width = safeReadLine().toInt()
-    // println("Please input the height of the resulting picture:")
-    // val height = safeReadLine().toInt()
+    println("The pattern:$newLineSymbol${pattern.trimIndent()}")
 
-    // println("The pattern:$newLineSymbol${pattern.trimIndent()}")
-
-    // println("The generated image:")
-    // println(applyGenerator(pattern, generatorName, width, height))
+    println("The generated image:")
+    println(applyGenerator(pattern, generatorName, width, height))
 }
 
