@@ -27,7 +27,27 @@ fun applyBordersFilter(picture: String): String {
     return result.toString()
 }
 
-fun applySquaredFilter(picture: String): String = TODO()
+fun applySquaredFilter(picture: String): String {
+    val pictureWidth = getPictureWidth(picture)
+    val horizontalBorder = "$borderSymbol".repeat((pictureWidth + 4) * 2)
+
+    val sb = StringBuilder()
+    sb.append("$horizontalBorder$newLineSymbol")
+
+    for (row in picture.lines()) {
+        val singleRow = StringBuilder()
+
+        singleRow.append("$borderSymbol$separator$row")
+        if (row.length < pictureWidth) {
+            singleRow.append("$separator".repeat(pictureWidth - row.length))
+        }
+        singleRow.append("$separator$borderSymbol")
+        sb.append("${singleRow.toString().repeat(2)}$newLineSymbol")
+    }
+
+    val result = StringBuilder()
+    return result.append(sb.toString().repeat(2)).append("$horizontalBorder$newLineSymbol").toString()
+}
 
 fun main() {
     // Uncomment this code on the last step of the game
