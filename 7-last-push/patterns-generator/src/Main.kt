@@ -46,6 +46,25 @@ fun dropTopLine(image: String, width: Int, patternHeight: Int, patternWidth: Int
     return image
 }
 
+fun canvasGenerator(pattern: String, width: Int, height: Int): String {
+    val result = StringBuilder()
+    val horizontalLine: String = repeatHorizontally(pattern, width, pattern.lines().maxOfOrNull { it.length } ?: 0)
+    val horizontalLineDrop: String = dropTopLine(
+        horizontalLine,
+        width,
+        getPatternHeight(horizontalLine),
+        pattern.lines().maxOfOrNull { it.length } ?: 0)
+
+    result.append(horizontalLine, newLineSymbol)
+
+    for (i in 1 until height) {
+        if (getPatternHeight(pattern) > 1) result.append(horizontalLineDrop, newLineSymbol)
+        else result.append(horizontalLine, newLineSymbol)
+    }
+
+    return result.removeSuffix(newLineSymbol).toString()
+}
+
 // You will use this function later
 fun choosePattern(): String {
     do {
