@@ -51,13 +51,13 @@ fun isWon(complete: Boolean, attempts: Int, maxAttemptsCount: Int): Boolean = co
 
 fun isLost(complete: Boolean, attempts: Int, maxAttemptsCount: Int): Boolean = !complete && attempts > maxAttemptsCount
 
-fun playGame(secret: String, wordLength: Int, maxAttemptsCount: Int) {
+fun playGame(secret: String, wordLength: Int, maxAttemptsCount: Int, alphabet: String) {
     var attempts: Int = 0
     var complete: Boolean
 
     do {
         println("Please input your guess. It should be of length $wordLength.")
-        val guess = safeReadLine()
+        val guess = safeUserInput(wordLength, alphabet)
         attempts++
         printRoundResults(secret, guess)
 
@@ -80,5 +80,5 @@ fun main() {
     val alphabet = "ABCDEFGH"
 
     println(getGameRules(wordLength, maxAttemptsCount, secretExample))
-    playGame(generateSecret(wordLength, alphabet), wordLength, maxAttemptsCount)
+    playGame(generateSecret(wordLength, alphabet), wordLength, maxAttemptsCount, alphabet)
 }
