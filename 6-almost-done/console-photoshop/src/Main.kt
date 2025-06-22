@@ -10,7 +10,22 @@ fun applyFilter(picture: String, filter: String): String {
     }
 }
 
-fun applyBordersFilter(picture: String): String = TODO()
+fun applyBordersFilter(picture: String): String {
+    val pictureWidth = getPictureWidth(picture)
+    val horizontalBorder = "$borderSymbol".repeat(pictureWidth + 4)
+
+    val result = StringBuilder()
+    result.append("$horizontalBorder$newLineSymbol")
+    for (row in picture.lines()) {
+        result.append("$borderSymbol$separator$row")
+        if (row.length < pictureWidth) {
+            result.append("$separator".repeat(pictureWidth - row.length))
+        }
+        result.append("$separator$borderSymbol$newLineSymbol")
+    }
+    result.append("$horizontalBorder$newLineSymbol")
+    return result.toString()
+}
 
 fun applySquaredFilter(picture: String): String = TODO()
 
