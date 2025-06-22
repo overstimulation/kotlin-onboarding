@@ -1,5 +1,13 @@
 fun safeReadLine(): String = readlnOrNull() ?: error("Received null value")
 
+fun choosePicture(): String {
+    do {
+        println("Please choose a picture. The possible options are: ${allPictures()}")
+        val picture = getPictureByName(safeReadLine())
+        picture?.let { return picture }
+    } while (true)
+}
+
 fun getPicture(): String {
     println("Do you want to use a predefined picture or a custom one?${newLineSymbol}Please input 'yes' for a predefined image or 'no' for a custom one")
     do {
@@ -11,14 +19,6 @@ fun getPicture(): String {
             }
             else -> println("Please input 'yes' or 'no'")
         }
-    } while (true)
-}
-
-fun choosePicture(): String {
-    do {
-        println("Please choose a picture. The possible options are: ${allPictures()}")
-        val picture = getPictureByName(safeReadLine())
-        picture?.let { return picture }
     } while (true)
 }
 
@@ -83,8 +83,14 @@ fun applySquaredFilter(picture: String): String {
     return result.append(sb.toString().repeat(2)).append("$horizontalBorder$newLineSymbol").toString()
 }
 
-fun main() {
-    // Uncomment this code on the last step of the game
+fun photoshop() {
+    var picture = getPicture()
+    val filter = chooseFilter()
+    println("The old image:$newLineSymbol$picture")
+    picture = applyFilter(picture, filter)
+    println("The transformed picture:$newLineSymbol$picture")
+}
 
-    // photoshop()
+fun main() {
+     photoshop()
 }
