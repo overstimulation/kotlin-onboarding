@@ -1,4 +1,3 @@
-// You will use this function later
 fun getGameRules(wordLength: Int, maxAttemptsCount: Int) = "Welcome to the game!$newLineSymbol$newLineSymbol" +
         "In this game, you need to guess the word made by the computer.$newLineSymbol" +
         "The hidden word will appear as a sequence of underscores, one underscore means one letter.$newLineSymbol" +
@@ -69,15 +68,37 @@ fun getRoundResults(secret: String, guess: Char, currentUserWord: String): Strin
 
 fun isComplete(secret: String, currentGuess: String): Boolean = secret == currentGuess.replace(separator, "")
 
-// You will use this function later
 fun isWon(complete: Boolean, attempts: Int, maxAttemptsCount: Int) = complete && attempts <= maxAttemptsCount
 
-// You will use this function later
 fun isLost(complete: Boolean, attempts: Int, maxAttemptsCount: Int) = !complete && attempts > maxAttemptsCount
 
-fun main() {
-    // Uncomment this code on the last step of the game
+fun playGame(secret: String, maxAttemptsCount: Int) {
+    var attempts: Int = 0
+    var complete: Boolean
+    var currentGuess: String = getHiddenSecret(wordLength)
 
-    // println(getGameRules(wordLength, maxAttemptsCount))
-    // playGame(generateSecret(), maxAttemptsCount)
+    println("I guessed a word: $currentGuess")
+    do {
+        val guess = safeUserInput()
+        currentGuess = getRoundResults(secret, guess, currentGuess)
+        attempts++
+
+        complete = isComplete(secret, currentGuess)
+
+        if (isWon(complete, attempts, maxAttemptsCount)) {
+            println("Congratulations! You guessed it!")
+            break
+        }
+
+        if (isLost(complete, attempts, maxAttemptsCount)) {
+            println("Sorry, you lost! My word is $secret")
+            break
+        }
+
+    } while (!complete)
+}
+
+fun main() {
+    println(getGameRules(wordLength, maxAttemptsCount))
+    playGame(generateSecret(), maxAttemptsCount)
 }
