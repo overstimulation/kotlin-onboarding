@@ -22,6 +22,14 @@ fun getPattern(): String {
 
 fun getPatternHeight(pattern: String): Int = pattern.lines().size
 
+fun fillPatternRow(patternRow: String, patternWidth: Int): String {
+    if (patternRow.length > patternWidth) {
+        throw IllegalStateException("The pattern row is longer than pattern width")
+    }
+
+    return patternRow.padEnd(patternWidth, separator)
+}
+
 // You will use this function later
 fun choosePattern(): String {
     do {
