@@ -65,6 +65,59 @@ fun canvasGenerator(pattern: String, width: Int, height: Int): String {
     return result.removeSuffix(newLineSymbol).toString()
 }
 
+fun repeatHorizontallyWithGaps(pattern: String, n: Int, startWithPattern: Boolean): String {
+    val patternLines = pattern.lines()
+    val patternWidth = getPatternWidth(pattern)
+    val gapLine = " ".repeat(patternWidth)
+    val result = StringBuilder()
+
+    for (i in patternLines.indices) {
+        val currentRow = fillPatternRow(patternLines[i], patternWidth)
+        val currentLineBuilder = StringBuilder()
+
+        for (j in 0 until n) {
+            if (startWithPattern) {
+                if (j % 2 == 0) {
+                    currentLineBuilder.append(currentRow)
+                } else {
+                    currentLineBuilder.append(gapLine)
+                }
+            } else {
+                if (j % 2 == 0) {
+                    currentLineBuilder.append(gapLine)
+                } else {
+                    currentLineBuilder.append(currentRow)
+                }
+            }
+        }
+        result.append(currentLineBuilder.toString())
+        result.append(newLineSymbol)
+    }
+    return result.removeSuffix(newLineSymbol).toString()
+}
+
+fun canvasWithGapsGenerator(pattern: String, width: Int, height: Int): String {
+    if (height < 1) {
+        return ""
+    }
+
+    val lineStartingWithPattern = repeatHorizontallyWithGaps(pattern, width, true)
+    val lineStartingWithGap = repeatHorizontallyWithGaps(pattern, width, false)
+    val resultBuilder = StringBuilder()
+
+    for (i in 0 until height) {
+        if (i % 2 == 0) {
+            resultBuilder.append(lineStartingWithPattern)
+        } else {
+            resultBuilder.append(lineStartingWithGap)
+        }
+        if (i < height - 1) {
+            resultBuilder.append(newLineSymbol)
+        }
+    }
+    return resultBuilder.toString()
+}
+
 // You will use this function later
 fun choosePattern(): String {
     do {
@@ -113,3 +166,4 @@ fun main() {
     // println("The generated image:")
     // println(applyGenerator(pattern, generatorName, width, height))
 }
+
