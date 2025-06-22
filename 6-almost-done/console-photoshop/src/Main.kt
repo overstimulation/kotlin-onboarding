@@ -1,5 +1,13 @@
 fun safeReadLine(): String = readlnOrNull() ?: error("Received null value")
 
+fun choosePicture(): String {
+    do {
+        println("Please choose a picture. The possible options are: ${allPictures()}")
+        val picture = getPictureByName(safeReadLine())
+        picture?.let { return picture }
+    } while (true)
+}
+
 fun chooseFilter(): String {
     println("Please choose the filter: 'borders' or 'squared'.")
     do {
