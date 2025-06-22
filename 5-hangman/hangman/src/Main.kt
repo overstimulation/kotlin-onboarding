@@ -31,6 +31,20 @@ fun generateNewUserWord(secret: String, guess: Char, currentUserWord: String): S
     return newUserWord.removeSuffix(separator)
 }
 
+fun isCorrectInput(userInput: String): Boolean {
+    if (userInput.length != 1) {
+        println("The length of your guess should be 1! Try again!")
+        return false
+    }
+
+    if (!userInput[0].isLetter()) {
+        println("You should input only English letters! Try again!")
+        return false
+    }
+
+    return true
+}
+
 fun isComplete(secret: String, currentGuess: String): Boolean = secret == currentGuess.replace(separator, "")
 
 // You will use this function later
