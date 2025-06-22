@@ -45,6 +45,17 @@ fun isCorrectInput(userInput: String): Boolean {
     return true
 }
 
+fun safeUserInput(): Char {
+    var guess: String
+
+    do {
+        println("Please input your guess.")
+        guess = safeReadLine()
+    } while (!isCorrectInput(guess))
+
+    return guess.uppercase()[0]
+}
+
 fun isComplete(secret: String, currentGuess: String): Boolean = secret == currentGuess.replace(separator, "")
 
 // You will use this function later
