@@ -1,5 +1,15 @@
 fun safeReadLine(): String = readlnOrNull() ?: error("Received null value")
 
+fun chooseFilter(): String {
+    println("Please choose the filter: 'borders' or 'squared'.")
+    do {
+        when (val input = safeReadLine()){
+            "borders", "squared" -> return input
+            else -> println("Please input 'borders' or 'squared'")
+        }
+    } while (true)
+}
+
 fun trimPicture(picture: String): String = picture.trimIndent()
 
 fun applyFilter(picture: String, filter: String): String {
