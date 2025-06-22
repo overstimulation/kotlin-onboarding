@@ -30,6 +30,15 @@ fun fillPatternRow(patternRow: String, patternWidth: Int): String {
     return patternRow.padEnd(patternWidth, separator)
 }
 
+fun repeatHorizontally(pattern: String, n: Int, patternWidth: Int): String {
+    val lines = pattern.lines()
+    val result = StringBuilder()
+    for (line in lines) {
+        result.append(fillPatternRow(line, patternWidth).repeat(n)).append(newLineSymbol)
+    }
+    return result.removeSuffix(newLineSymbol).toString()
+}
+
 // You will use this function later
 fun choosePattern(): String {
     do {
