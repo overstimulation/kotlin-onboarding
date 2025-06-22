@@ -20,6 +20,8 @@ fun getPattern(): String {
     } while (true)
 }
 
+fun getPatternHeight(pattern: String): Int = pattern.lines().size
+
 // You will use this function later
 fun choosePattern(): String {
     do {
