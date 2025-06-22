@@ -56,6 +56,17 @@ fun safeUserInput(): Char {
     return guess.uppercase()[0]
 }
 
+fun getRoundResults(secret: String, guess: Char, currentUserWord: String): String {
+    if (guess !in secret) {
+        println("Sorry, the secret does not contain the symbol: $guess. The current word is $currentUserWord")
+        return currentUserWord
+    } else {
+        val newUserWord = generateNewUserWord(secret, guess, currentUserWord)
+        println("Great! This letter is in the word! The current word is $newUserWord")
+        return newUserWord
+    }
+}
+
 fun isComplete(secret: String, currentGuess: String): Boolean = secret == currentGuess.replace(separator, "")
 
 // You will use this function later
