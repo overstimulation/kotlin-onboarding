@@ -13,6 +13,20 @@ fun getGameRules(wordLength: Int, maxAttemptsCount: Int) = "Welcome to the game!
         "" +
         "Good luck in the game!"
 
+fun generateNewUserWord(secret: String, guess: Char, currentUserWord: String): String {
+    var newUserWord: String = ""
+
+    for (i in secret.indices) {
+        newUserWord += if (secret[i] == guess) {
+            "${secret[i]}$separator"
+        } else {
+            "${currentUserWord[i * 2]}$separator"
+        }
+    }
+
+    return newUserWord.removeSuffix(separator)
+}
+
 fun isComplete(secret: String, currentGuess: String): Boolean = secret == currentGuess.replace(separator, "")
 
 // You will use this function later
