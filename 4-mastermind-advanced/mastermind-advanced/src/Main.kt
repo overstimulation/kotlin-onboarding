@@ -11,6 +11,19 @@ fun getGameRules(wordLength: Int, maxAttemptsCount: Int, secretExample: String) 
             "For example, with $secretExample as the hidden word, the BCDF guess will " +
             "give 1 full match (C) and 1 partial match (B)."
 
+fun isCorrectInput(userInput: String, wordLength: Int, alphabet: String): Boolean {
+    if (userInput.length != wordLength) {
+        println("The length of your guess should be $wordLength characters! Try again!")
+        return false
+    }
+
+    if (userInput.any { it !in alphabet }) {
+        return false
+    }
+
+    return true
+}
+
 fun generateSecret(wordLength: Int, alphabet: String): String = List(wordLength) { alphabet.random() }.joinToString("")
 
 fun countAllMatches(secret: String, guess: String): Int = minOf(guess.filter { it in secret }.length, secret.filter { it in guess }.length)
