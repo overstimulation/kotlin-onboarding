@@ -13,6 +13,8 @@ fun getGameRules(wordLength: Int, maxAttemptsCount: Int) = "Welcome to the game!
         "" +
         "Good luck in the game!"
 
+fun isComplete(secret: String, currentGuess: String): Boolean = secret == currentGuess.replace(separator, "")
+
 // You will use this function later
 fun isWon(complete: Boolean, attempts: Int, maxAttemptsCount: Int) = complete && attempts <= maxAttemptsCount
 
