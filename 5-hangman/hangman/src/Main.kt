@@ -13,6 +13,8 @@ fun getGameRules(wordLength: Int, maxAttemptsCount: Int) = "Welcome to the game!
         "" +
         "Good luck in the game!"
 
+fun generateSecret(): String = words.random()
+
 fun generateNewUserWord(secret: String, guess: Char, currentUserWord: String): String {
     var newUserWord: String = ""
 
