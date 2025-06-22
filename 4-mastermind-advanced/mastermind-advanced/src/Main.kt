@@ -24,6 +24,17 @@ fun isCorrectInput(userInput: String, wordLength: Int, alphabet: String): Boolea
     return true
 }
 
+fun safeUserInput(wordLength: Int, alphabet: String): String {
+    var userInput: String
+
+    do {
+        println("Please input your guess. It should be of length $wordLength, and each symbol should be from the alphabet: $alphabet.")
+        userInput = safeReadLine()
+    } while (!isCorrectInput(userInput, wordLength, alphabet))
+
+    return userInput
+}
+
 fun generateSecret(wordLength: Int, alphabet: String): String = List(wordLength) { alphabet.random() }.joinToString("")
 
 fun countAllMatches(secret: String, guess: String): Int = minOf(guess.filter { it in secret }.length, secret.filter { it in guess }.length)
