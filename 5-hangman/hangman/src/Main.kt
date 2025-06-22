@@ -15,6 +15,8 @@ fun getGameRules(wordLength: Int, maxAttemptsCount: Int) = "Welcome to the game!
 
 fun generateSecret(): String = words.random()
 
+fun getHiddenSecret(wordLength: Int): String = List(wordLength) { underscore }.joinToString(separator)
+
 fun generateNewUserWord(secret: String, guess: Char, currentUserWord: String): String {
     var newUserWord: String = ""
 
